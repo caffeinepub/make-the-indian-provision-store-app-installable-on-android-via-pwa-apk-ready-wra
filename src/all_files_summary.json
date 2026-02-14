@@ -1,0 +1,20 @@
+{
+  "backend/main.mo": "Empty Motoko actor with no implemented methods.",
+  "feature_evidence.json": "Metadata describing a feature addition to the StoreHome page and associated files and components.",
+  "frontend-file-summaries.txt": "List of frontend source files with short descriptions of their roles.",
+  "frontend/index.css": "Tailwind-based global styles defining a warm kirana-inspired theme with responsive mobile defaults.",
+  "frontend/index.html": "HTML entry point defining metadata, PWA manifest links, icons, and root mounting point.",
+  "frontend/public/manifest.webmanifest": "PWA manifest declaring app metadata, theme colors, start URL, and icon assets.",
+  "frontend/public/sw.js": "Service worker implementing install, activate, and network-first fetch caching for offline support.",
+  "frontend/README-TWA-APK.md": "Guide for packaging the PWA into an Android APK using Trusted Web Activity.",
+  "frontend/src/App.tsx": "Minimal component that renders the StoreHome page.",
+  "frontend/src/components/KiranaThemeNotes.md": "Design system documentation detailing the kirana-inspired color, layout, and component guidelines.",
+  "frontend/src/hooks/useActor.ts": "React Query hook that creates and updates an actor based on Internet Identity authentication state.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Context and hooks for managing Internet Identity login, stored identity loading, and status tracking.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder for backend-related React Query hooks.",
+  "frontend/src/index.css": "Defines Tailwind layers and extensive OKLCH CSS variables for light/dark themes with mobile-friendly defaults.",
+  "frontend/src/main.tsx": "Bootstraps the React app with React Query and Internet Identity providers and loads global styles.",
+  "frontend/src/pages/StoreHome.tsx": "Renders the store’s home page with header, hero section, categories, and featured product listings.",
+  "frontend/tailwind.config.js": "Configures Tailwind theme, colors from CSS variables, typography, animations, and plugin integrations.",
+  "project_state.json": "Tracks project metadata, features, issues, and requirements for building an Android-installable PWA version."
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Build a smartphone APK for an Indian provision (kirana) store app.",
+  "architectural_notes": [],
+  "known_issues": [
+    "\"Toiletery\" (toiletries) category is missing from item categories in the app."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-add-progressive-web-app-pwa-support-to-the-react-frontend-so-the-app-can-be-installed-on-android-devices-home-screen-install-and-can-be-wrapped-into-an-android-apk-using-a-trusted-web-activity-twa",
+      "title": "Add Progressive Web App (PWA) support to the React frontend so the app can be installed on Android devices (home-screen install) and can be wrapped into an Android APK using a Trusted Web Activity (TWA).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-documented-reproducible-process-to-produce-an-android-apk-by-wrapping-the-deployed-web-app-url-using-android-trusted-web-activity-twa-including-required-android-settings-and-where-to-paste-the-production-url",
+      "title": "Provide a documented, reproducible process to produce an Android APK by wrapping the deployed web app URL using Android Trusted Web Activity (TWA), including required Android settings and where to paste the production URL.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-coherent-visual-theme-suitable-for-an-indian-provision-kirana-store-app-and-use-it-consistently-across-layouts-typography-spacing-and-component-styling-avoid-blue-purple-as-primary-colors",
+      "title": "Apply a coherent visual theme suitable for an Indian provision (kirana) store app and use it consistently across layouts, typography, spacing, and component styling (avoid blue/purple as primary colors).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-required-static-pwa-icon-assets-to-the-frontend-and-ensure-they-are-referenced-by-the-web-app-manifest",
+      "title": "Add required static PWA icon assets to the frontend and ensure they are referenced by the web app manifest.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-missing-toiletries-category-to-the-category-list-shown-on-the-store-home-page-and-fix-spelling-to-toiletries-in-user-facing-text",
+      "title": "Add a missing \"Toiletries\" category to the category list shown on the Store Home page (and fix spelling to \"Toiletries\" in user-facing text).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create an Android smartphone APK for an Indian provision store app",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Make the Indian provision store app installable on Android via PWA (APK-ready wrapping)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add missing Toiletries category to Store Home categories",
+  "requirements": [
+    {
+      "id": "REQ-5",
+      "summary": "Add the missing “Toiletries” category to the Store Home “Shop by Category” grid and ensure user-facing spelling is exactly “Toiletries”.",
+      "acceptanceCriteria": [
+        "On the Store Home page, the \"Shop by Category\" grid includes a category labeled \"Toiletries\".",
+        "The label is spelled exactly \"Toiletries\" (English).",
+        "The new category renders consistently with existing category cards (icon + name + item count) and does not break the grid layout on mobile and desktop."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/StoreHome.tsx",
+          "operation": "modify",
+          "description": "Update the StoreHome categories list to include a new category object with name exactly \"Toiletries\" (fix any existing misspelling if present), with an icon and item count consistent with other entries. Ensure it renders through the existing shadcn/ui Card-based category card mapping so the grid layout and styling remain unchanged across breakpoints. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

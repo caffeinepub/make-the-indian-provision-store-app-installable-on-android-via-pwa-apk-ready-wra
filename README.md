@@ -1,2 +1,3 @@
-# make-the-indian-provision-store-app-installable-on-android-via-pwa-apk-ready-wra
-Exported from Caffeine project: Make the Indian provision store app installable on Android via PWA (APK-ready wrapping)
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

@@ -1,0 +1,23 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-missing-toiletries-category-to-the-category-list-shown-on-the-store-home-page-and-fix-spelling-to-toiletries-in-user-facing-text",
+      "featureTitle": "Add a missing \"Toiletries\" category to the category list shown on the Store Home page (and fix spelling to \"Toiletries\" in user-facing text).",
+      "files": [
+        "frontend/src/pages/StoreHome.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

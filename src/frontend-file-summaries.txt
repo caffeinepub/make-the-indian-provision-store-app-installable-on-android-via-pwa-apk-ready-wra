@@ -1,0 +1,14 @@
+{
+  "frontend/src/App.tsx": "Main application component that renders the StoreHome page.",
+  "frontend/src/pages/StoreHome.tsx": "Complete provision store homepage with header, hero section, category grid (now including Toiletries), featured products, store info, and footer with proper mobile-responsive layout and warm kirana-inspired design.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder file for React Query hooks (currently no backend operations needed).",
+  "frontend/index.css": "Global styles with warm kirana-inspired OKLCH color system (saffron/spice palette), mobile-first responsive defaults, and safe tap targets for Android devices.",
+  "frontend/tailwind.config.js": "Tailwind configuration with extended color tokens, mobile-first container padding, custom font stack, and consistent border radius system.",
+  "frontend/index.html": "HTML entry point with PWA meta tags, manifest link, theme color, and mobile-web-app-capable settings for Android installability.",
+  "frontend/public/manifest.webmanifest": "PWA manifest with app metadata, standalone display mode, saffron theme color, and references to all required icon assets.",
+  "frontend/public/sw.js": "Service worker implementing network-first caching strategy with offline fallback for app shell and navigation requests.",
+  "frontend/src/main.tsx": "Application entry point with React Query, Internet Identity providers, production service worker registration for PWA support, and correct relative CSS import path.",
+  "frontend/README-TWA-APK.md": "Comprehensive step-by-step documentation for wrapping the deployed PWA into an Android APK using Trusted Web Activity (TWA), including Bubblewrap CLI and manual Android Studio methods.",
+  "frontend/src/components/KiranaThemeNotes.md": "Design system documentation describing the warm kirana-inspired color palette, typography, spacing, component styling guidelines, and mobile-first accessibility considerations.",
+  "frontend/src/index.css": "Global styles with warm kirana-inspired OKLCH color system (saffron/spice palette), mobile-first responsive defaults, and safe tap targets for Android devices."
+}

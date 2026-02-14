@@ -1,0 +1,37 @@
+{
+  "kind": "build_request",
+  "title": "Add missing Toiletries category to store categories",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-5",
+      "text": "Add a missing \"Toiletries\" category to the category list shown on the Store Home page (and fix spelling to \"Toiletries\" in user-facing text).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "toiletery category is missing"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On the Store Home page, the \"Shop by Category\" grid includes a category labeled \"Toiletries\".",
+        "The label is spelled exactly \"Toiletries\" (English).",
+        "The new category renders consistently with existing category cards (icon + name + item count) and does not break the grid layout on mobile and desktop."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files under frontend/src/components/ui (Shadcn UI components are read-only and must be composed).",
+    "Do not modify any paths listed in SYSTEM_CONTEXT.frontend.immutablePaths."
+  ],
+  "nonGoals": [
+    "Adding backend persistence or admin management for categories.",
+    "Adding category filtering/navigation behavior beyond displaying the missing category."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
