@@ -8,10 +8,116 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
-export const idlService = IDL.Service({});
+export const ProductCategory = IDL.Variant({
+  'groceries' : IDL.Null,
+  'snacks' : IDL.Null,
+  'householdToiletries' : IDL.Null,
+  'fruits' : IDL.Null,
+  'spices' : IDL.Null,
+  'beverages' : IDL.Null,
+  'vegetables' : IDL.Null,
+});
+export const UserRole = IDL.Variant({
+  'admin' : IDL.Null,
+  'user' : IDL.Null,
+  'guest' : IDL.Null,
+});
+export const Product = IDL.Record({
+  'id' : IDL.Nat,
+  'name' : IDL.Text,
+  'category' : ProductCategory,
+  'price' : IDL.Nat,
+});
+export const BuyerProfile = IDL.Record({ 'name' : IDL.Text });
+export const UserProfile = IDL.Record({ 'name' : IDL.Text });
+
+export const idlService = IDL.Service({
+  '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+  'addProduct' : IDL.Func(
+      [IDL.Nat, IDL.Text, IDL.Nat, ProductCategory],
+      [],
+      [],
+    ),
+  'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+  'assignVendor' : IDL.Func([IDL.Principal], [], []),
+  'getAllProducts' : IDL.Func([], [IDL.Vec(Product)], ['query']),
+  'getBuyerProfile' : IDL.Func(
+      [IDL.Principal],
+      [IDL.Opt(BuyerProfile)],
+      ['query'],
+    ),
+  'getCallerBuyerProfile' : IDL.Func([], [IDL.Opt(BuyerProfile)], ['query']),
+  'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
+  'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
+  'getProduct' : IDL.Func([IDL.Nat], [IDL.Opt(Product)], ['query']),
+  'getUserProfile' : IDL.Func(
+      [IDL.Principal],
+      [IDL.Opt(UserProfile)],
+      ['query'],
+    ),
+  'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
+  'removeVendor' : IDL.Func([IDL.Principal], [], []),
+  'saveCallerBuyerProfile' : IDL.Func([BuyerProfile], [], []),
+  'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
+  'updateProductPrice' : IDL.Func([IDL.Nat, IDL.Nat], [], []),
+});
 
 export const idlInitArgs = [];
 
-export const idlFactory = ({ IDL }) => { return IDL.Service({}); };
+export const idlFactory = ({ IDL }) => {
+  const ProductCategory = IDL.Variant({
+    'groceries' : IDL.Null,
+    'snacks' : IDL.Null,
+    'householdToiletries' : IDL.Null,
+    'fruits' : IDL.Null,
+    'spices' : IDL.Null,
+    'beverages' : IDL.Null,
+    'vegetables' : IDL.Null,
+  });
+  const UserRole = IDL.Variant({
+    'admin' : IDL.Null,
+    'user' : IDL.Null,
+    'guest' : IDL.Null,
+  });
+  const Product = IDL.Record({
+    'id' : IDL.Nat,
+    'name' : IDL.Text,
+    'category' : ProductCategory,
+    'price' : IDL.Nat,
+  });
+  const BuyerProfile = IDL.Record({ 'name' : IDL.Text });
+  const UserProfile = IDL.Record({ 'name' : IDL.Text });
+  
+  return IDL.Service({
+    '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+    'addProduct' : IDL.Func(
+        [IDL.Nat, IDL.Text, IDL.Nat, ProductCategory],
+        [],
+        [],
+      ),
+    'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+    'assignVendor' : IDL.Func([IDL.Principal], [], []),
+    'getAllProducts' : IDL.Func([], [IDL.Vec(Product)], ['query']),
+    'getBuyerProfile' : IDL.Func(
+        [IDL.Principal],
+        [IDL.Opt(BuyerProfile)],
+        ['query'],
+      ),
+    'getCallerBuyerProfile' : IDL.Func([], [IDL.Opt(BuyerProfile)], ['query']),
+    'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
+    'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
+    'getProduct' : IDL.Func([IDL.Nat], [IDL.Opt(Product)], ['query']),
+    'getUserProfile' : IDL.Func(
+        [IDL.Principal],
+        [IDL.Opt(UserProfile)],
+        ['query'],
+      ),
+    'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
+    'removeVendor' : IDL.Func([IDL.Principal], [], []),
+    'saveCallerBuyerProfile' : IDL.Func([BuyerProfile], [], []),
+    'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
+    'updateProductPrice' : IDL.Func([IDL.Nat, IDL.Nat], [], []),
+  });
+};
 
 export const init = ({ IDL }) => { return []; };

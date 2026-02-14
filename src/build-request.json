@@ -1,34 +1,108 @@
 {
   "kind": "build_request",
-  "title": "Add missing Toiletries category to store categories",
+  "title": "Add predefined product categories and require category selection for vendor-added items",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-5",
-      "text": "Add a missing \"Toiletries\" category to the category list shown on the Store Home page (and fix spelling to \"Toiletries\" in user-facing text).",
-      "target": "frontend",
+      "id": "REQ-1",
+      "text": "Define a fixed set of product categories for the app, using exactly these English category labels: \"Fruits\", \"Vegetables\", \"Spices\", \"Groceries\", \"Snacks\", \"Beverages\", and \"Household/Toiletries\".",
+      "target": "both",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4"
         ],
         "quotes": [
-          "toiletery category is missing"
+          "category like fruits, Vegetables, Spices, Groceries, snacks, Bevarages, Household/ Toiletries."
         ]
       },
       "acceptanceCriteria": [
-        "On the Store Home page, the \"Shop by Category\" grid includes a category labeled \"Toiletries\".",
-        "The label is spelled exactly \"Toiletries\" (English).",
-        "The new category renders consistently with existing category cards (icon + name + item count) and does not break the grid layout on mobile and desktop."
+        "The app has a single canonical list of allowed categories that includes: Fruits, Vegetables, Spices, Groceries, Snacks, Beverages, Household/Toiletries.",
+        "All user-facing text uses the spelling \"Beverages\" (not \"Bevarages\")."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Extend the backend Product model to include a category field, and update product creation to persist the selected category for each product.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "category like fruits, Vegetables, Spices, Groceries, snacks, Bevarages, Household/ Toiletries."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend Product type includes a category value (e.g., Text).",
+        "The add product method accepts a category value and stores it with the product.",
+        "getProduct and getAllProducts return product objects that include the category field.",
+        "Backend rejects/throws an error when add product is called with a category not in the predefined allowed list.",
+        "Existing authorization behavior for add/update remains unchanged."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add a required Category selector to the vendor add-product form, using the predefined categories, and include the selected category in the add-product mutation call.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "category like fruits, Vegetables, Spices, Groceries, snacks, Bevarages, Household/ Toiletries."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Vendor add-product form includes a Category field rendered as a dropdown/select (not free text).",
+        "Category is required; attempting to submit without selecting a category shows a clear English validation error.",
+        "Submitting a new product calls the backend with id, name, price, and category.",
+        "On successful add, the form clears the Category field along with the other fields."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Update the buyer-facing store UI to reflect the new category set (Fruits, Vegetables, Spices, Groceries, Snacks, Beverages, Household/Toiletries) in the \"Shop by Category\" section.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "category like fruits, Vegetables, Spices, Groceries, snacks, Bevarages, Household/ Toiletries."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The \"Shop by Category\" cards display the exact new category names: Fruits, Vegetables, Spices, Groceries, Snacks, Beverages, Household/Toiletries.",
+        "Categories that are not in the requested set are removed/merged so they do not appear separately (e.g., do not show separate \"Personal Care\", \"Toiletries\", and \"Household\" entries)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Ensure frontend backend type bindings used by the React app are updated so the Product type includes the new category field without TypeScript errors.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "category like fruits, Vegetables, Spices, Groceries, snacks, Bevarages, Household/ Toiletries."
+        ]
+      },
+      "acceptanceCriteria": [
+        "TypeScript build passes with Product including the category field.",
+        "Product fetching and rendering continues to work after the backend interface change."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files under frontend/src/components/ui (Shadcn UI components are read-only and must be composed).",
-    "Do not modify any paths listed in SYSTEM_CONTEXT.frontend.immutablePaths."
+    "Backend must remain a single-actor Motoko architecture (all logic in backend/main.mo).",
+    "Do not edit any files under frontend/src/components/ui or any paths listed as immutable in SYSTEM_CONTEXT.",
+    "User-facing text must be in English."
   ],
   "nonGoals": [
-    "Adding backend persistence or admin management for categories.",
-    "Adding category filtering/navigation behavior beyond displaying the missing category."
+    "Implementing cart/checkout or payment flow.",
+    "Adding dynamic category item counts driven by inventory data.",
+    "Adding search, filtering, or navigation flows beyond updating the displayed category list and vendor category selection."
   ],
   "imageRequirements": {
     "required": [],

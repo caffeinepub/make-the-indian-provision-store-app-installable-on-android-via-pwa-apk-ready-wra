@@ -10,7 +10,45 @@ import type { ActorMethod } from '@icp-sdk/core/agent';
 import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
-export interface _SERVICE {}
+export interface BuyerProfile { 'name' : string }
+export interface Product {
+  'id' : bigint,
+  'name' : string,
+  'category' : ProductCategory,
+  'price' : bigint,
+}
+export type ProductCategory = { 'groceries' : null } |
+  { 'snacks' : null } |
+  { 'householdToiletries' : null } |
+  { 'fruits' : null } |
+  { 'spices' : null } |
+  { 'beverages' : null } |
+  { 'vegetables' : null };
+export interface UserProfile { 'name' : string }
+export type UserRole = { 'admin' : null } |
+  { 'user' : null } |
+  { 'guest' : null };
+export interface _SERVICE {
+  '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
+  'addProduct' : ActorMethod<
+    [bigint, string, bigint, ProductCategory],
+    undefined
+  >,
+  'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
+  'assignVendor' : ActorMethod<[Principal], undefined>,
+  'getAllProducts' : ActorMethod<[], Array<Product>>,
+  'getBuyerProfile' : ActorMethod<[Principal], [] | [BuyerProfile]>,
+  'getCallerBuyerProfile' : ActorMethod<[], [] | [BuyerProfile]>,
+  'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
+  'getCallerUserRole' : ActorMethod<[], UserRole>,
+  'getProduct' : ActorMethod<[bigint], [] | [Product]>,
+  'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
+  'isCallerAdmin' : ActorMethod<[], boolean>,
+  'removeVendor' : ActorMethod<[Principal], undefined>,
+  'saveCallerBuyerProfile' : ActorMethod<[BuyerProfile], undefined>,
+  'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
+  'updateProductPrice' : ActorMethod<[bigint, bigint], undefined>,
+}
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];
 export declare const idlFactory: IDL.InterfaceFactory;

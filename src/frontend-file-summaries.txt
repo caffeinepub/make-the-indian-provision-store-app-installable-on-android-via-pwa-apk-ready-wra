@@ -1,7 +1,7 @@
 {
   "frontend/src/App.tsx": "Main application component that renders the StoreHome page.",
-  "frontend/src/pages/StoreHome.tsx": "Complete provision store homepage with header, hero section, category grid (now including Toiletries), featured products, store info, and footer with proper mobile-responsive layout and warm kirana-inspired design.",
-  "frontend/src/hooks/useQueries.ts": "Placeholder file for React Query hooks (currently no backend operations needed).",
+  "frontend/src/pages/StoreHome.tsx": "Complete provision store homepage with tabbed vendor panel, proper authorization guards, buyer-facing product grid, and Shop by Category section displaying the seven canonical categories (Fruits, Vegetables, Spices, Groceries, Snacks, Beverages, Household/Toiletries).",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including product management with category support, role queries, vendor assignment/removal, and buyer profiles with normalized error handling and proper cache invalidation.",
   "frontend/index.css": "Global styles with warm kirana-inspired OKLCH color system (saffron/spice palette), mobile-first responsive defaults, and safe tap targets for Android devices.",
   "frontend/tailwind.config.js": "Tailwind configuration with extended color tokens, mobile-first container padding, custom font stack, and consistent border radius system.",
   "frontend/index.html": "HTML entry point with PWA meta tags, manifest link, theme color, and mobile-web-app-capable settings for Android installability.",
@@ -10,5 +10,16 @@
   "frontend/src/main.tsx": "Application entry point with React Query, Internet Identity providers, production service worker registration for PWA support, and correct relative CSS import path.",
   "frontend/README-TWA-APK.md": "Comprehensive step-by-step documentation for wrapping the deployed PWA into an Android APK using Trusted Web Activity (TWA), including Bubblewrap CLI and manual Android Studio methods.",
   "frontend/src/components/KiranaThemeNotes.md": "Design system documentation describing the warm kirana-inspired color palette, typography, spacing, component styling guidelines, and mobile-first accessibility considerations.",
-  "frontend/src/index.css": "Global styles with warm kirana-inspired OKLCH color system (saffron/spice palette), mobile-first responsive defaults, and safe tap targets for Android devices."
+  "frontend/src/index.css": "Global styles with warm kirana-inspired OKLCH color system (saffron/spice palette), mobile-first responsive defaults, and safe tap targets for Android devices.",
+  "frontend/src/components/DailyDealsPriceEditor.tsx": "Modal dialog component for editing Today's Deals prices with validation, success/error feedback, individual save actions per product, and authorization gating via isAuthorized prop.",
+  "frontend/src/components/vendor/VendorLoginStatus.tsx": "Vendor login/logout button component that uses Internet Identity, displays principal ID when authenticated, and clears React Query cache on logout.",
+  "frontend/src/hooks/useVendorAccess.ts": "Custom hook that derives vendor authorization state from Internet Identity and backend role query, returning states for signed-in status, checking authorization, vendor/admin roles, and guest status.",
+  "frontend/src/components/vendor/VendorDashboardPanel.tsx": "Vendor dashboard panel with authorization status header showing admin/vendor role badges, add product form including required category dropdown selector using shadcn Select component, validation for all fields including category, and actionable guidance for unauthorized users.",
+  "frontend/src/components/buyer/BuyerLoginStatus.tsx": "Buyer login/logout button component that uses Internet Identity, displays shortened principal ID when authenticated on larger screens, and clears React Query cache on logout.",
+  "frontend/src/hooks/useBuyerProfileQueries.ts": "React Query hooks for fetching and saving the caller's buyer profile, guarded by actor availability and signed-in status with proper cache invalidation.",
+  "frontend/src/hooks/useVendorMode.ts": "Hook that manages vendor-only mode via URL parameter (vendor=1) with support for both standard and hash-based routing, persists state in sessionStorage across navigation, and provides enable/disable functions for toggling vendor mode.",
+  "frontend/src/utils/urlParams.ts": "Utility functions for parsing and managing URL parameters that work with both hash-based and browser-based routing, including session storage persistence, parameter clearing, and secret parameter retrieval for admin tokens.",
+  "frontend/src/utils/actorErrors.ts": "Utility function that normalizes backend errors and agent errors into clear, user-friendly English messages for better error handling and diagnostics.",
+  "frontend/src/components/admin/VendorAccessManager.tsx": "Admin-only component for managing vendor permissions with Principal ID input, assign/remove vendor actions, validation, and clear success/error feedback.",
+  "frontend/src/constants/productCategories.ts": "Canonical list of product categories with display metadata (label, icon, description) matching the backend ProductCategory enum, plus helper functions to retrieve category display information."
 }

@@ -2,9 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-a-missing-toiletries-category-to-the-category-list-shown-on-the-store-home-page-and-fix-spelling-to-toiletries-in-user-facing-text",
-      "featureTitle": "Add a missing \"Toiletries\" category to the category list shown on the Store Home page (and fix spelling to \"Toiletries\" in user-facing text).",
+      "featureId": "feature-define-a-fixed-set-of-product-categories-for-the-app-using-exactly-these-english-category-labels-fruits-vegetables-spices-groceries-snacks-beverages-and-household-toiletries",
+      "featureTitle": "Define a fixed set of product categories for the app, using exactly these English category labels: \"Fruits\", \"Vegetables\", \"Spices\", \"Groceries\", \"Snacks\", \"Beverages\", and \"Household/Toiletries\".",
       "files": [
+        "frontend/src/constants/productCategories.ts",
         "frontend/src/pages/StoreHome.tsx"
       ],
       "components": [
@@ -12,7 +13,68 @@
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-required-category-selector-to-the-vendor-add-product-form-using-the-predefined-categories-and-include-the-selected-category-in-the-add-product-mutation-call",
+      "featureTitle": "Add a required Category selector to the vendor add-product form, using the predefined categories, and include the selected category in the add-product mutation call.",
+      "files": [
+        "frontend/src/components/vendor/VendorDashboardPanel.tsx",
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-buyer-facing-store-ui-to-reflect-the-new-category-set-fruits-vegetables-spices-groceries-snacks-beverages-household-toiletries-in-the-shop-by-category-section",
+      "featureTitle": "Update the buyer-facing store UI to reflect the new category set (Fruits, Vegetables, Spices, Groceries, Snacks, Beverages, Household/Toiletries) in the \"Shop by Category\" section.",
+      "files": [
+        "frontend/src/constants/productCategories.ts",
+        "frontend/src/pages/StoreHome.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-frontend-backend-type-bindings-used-by-the-react-app-are-updated-so-the-product-type-includes-the-new-category-field-without-typescript-errors",
+      "featureTitle": "Ensure frontend backend type bindings used by the React app are updated so the Product type includes the new category field without TypeScript errors.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/StoreHome.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
       ],
       "testIds": [
         "REQ-5"

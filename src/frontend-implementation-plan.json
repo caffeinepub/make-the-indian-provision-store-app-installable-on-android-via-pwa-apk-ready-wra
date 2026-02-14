@@ -1,21 +1,92 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add missing Toiletries category to Store Home categories",
+  "title": "Predefined product categories + required vendor selection (frontend updates)",
   "requirements": [
     {
-      "id": "REQ-5",
-      "summary": "Add the missing “Toiletries” category to the Store Home “Shop by Category” grid and ensure user-facing spelling is exactly “Toiletries”.",
+      "id": "REQ-1",
+      "summary": "Create a single canonical frontend category list matching the fixed English labels and reuse it across the UI.",
       "acceptanceCriteria": [
-        "On the Store Home page, the \"Shop by Category\" grid includes a category labeled \"Toiletries\".",
-        "The label is spelled exactly \"Toiletries\" (English).",
-        "The new category renders consistently with existing category cards (icon + name + item count) and does not break the grid layout on mobile and desktop."
+        "The app has a single canonical list of allowed categories that includes: Fruits, Vegetables, Spices, Groceries, Snacks, Beverages, Household/Toiletries.",
+        "All user-facing text uses the spelling \"Beverages\" (not \"Bevarages\")."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/constants/productCategories.ts",
+          "operation": "create",
+          "description": "Add a single canonical categories definition containing the exact English labels (Fruits, Vegetables, Spices, Groceries, Snacks, Beverages, Household/Toiletries) and a mapping to backend enum values (ProductCategory) for use in forms/UI."
+        },
+        {
+          "path": "frontend/src/pages/StoreHome.tsx",
+          "operation": "modify",
+          "description": "Replace the inline hardcoded categories array with the canonical list from frontend/src/constants/productCategories.ts to ensure a single source of truth and consistent English labels (including \"Beverages\")."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add a required Category dropdown to the vendor add-product form and send the selected category with the add-product call.",
+      "acceptanceCriteria": [
+        "Vendor add-product form includes a Category field rendered as a dropdown/select (not free text).",
+        "Category is required; attempting to submit without selecting a category shows a clear English validation error.",
+        "Submitting a new product calls the backend with id, name, price, and category.",
+        "On successful add, the form clears the Category field along with the other fields."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/vendor/VendorDashboardPanel.tsx",
+          "operation": "modify",
+          "description": "Add a required Category selector to the add-product form using the canonical list from frontend/src/constants/productCategories.ts; use the shadcn-ui Select component to render the dropdown (Verify the component's usage instructions before implementing). Add validation for missing selection with a clear English error message, include the selected category in the submit payload, and clear the selected category on successful add."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Update the useAddProduct mutation to accept a category value (typed as ProductCategory) and pass it to the backend addProduct call alongside id, name, and price."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Update the buyer-facing \"Shop by Category\" section to display only the new fixed category set with exact names.",
+      "acceptanceCriteria": [
+        "The \"Shop by Category\" cards display the exact new category names: Fruits, Vegetables, Spices, Groceries, Snacks, Beverages, Household/Toiletries.",
+        "Categories that are not in the requested set are removed/merged so they do not appear separately (e.g., do not show separate \"Personal Care\", \"Toiletries\", and \"Household\" entries)."
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/StoreHome.tsx",
           "operation": "modify",
-          "description": "Update the StoreHome categories list to include a new category object with name exactly \"Toiletries\" (fix any existing misspelling if present), with an icon and item count consistent with other entries. Ensure it renders through the existing shadcn/ui Card-based category card mapping so the grid layout and styling remain unchanged across breakpoints. Verify the component's usage instructions before implementing."
+          "description": "Update the \"Shop by Category\" rendering to show only the canonical category set (remove Personal Care/Toiletries/Household and replace with a single \"Household/Toiletries\"), ensuring the cards display the exact required English names."
+        },
+        {
+          "path": "frontend/src/constants/productCategories.ts",
+          "operation": "modify",
+          "description": "Ensure the canonical categories list includes the full set and supports any StoreHome display metadata (e.g., icons) while keeping the labels exactly as requested."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Align frontend TypeScript bindings and usage with the updated backend Product/category types so the app builds without TS errors.",
+      "acceptanceCriteria": [
+        "TypeScript build passes with Product including the category field.",
+        "Product fetching and rendering continues to work after the backend interface change."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/backend.d.ts",
+          "operation": "modify",
+          "description": "Update the generated/maintained backend type bindings so Product includes the category field, ProductCategory enum exists/aligns with the backend, and addProduct accepts (id, name, price, category) to match the backend interface, preventing TypeScript errors."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Update imports/types (e.g., ProductCategory) and mutation/query typing so product fetch/mutations compile cleanly after the interface change, without altering any non-required behaviors."
+        },
+        {
+          "path": "frontend/src/pages/StoreHome.tsx",
+          "operation": "modify",
+          "description": "Adjust product rendering typings as needed so fetching and displaying products continues to work with Product now including category, without adding new browsing/filtering flows."
         }
       ]
     }

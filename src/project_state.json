@@ -1,48 +1,40 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "Build a smartphone APK for an Indian provision (kirana) store app.",
-  "architectural_notes": [],
-  "known_issues": [
-    "\"Toiletery\" (toiletries) category is missing from item categories in the app."
+  "projectStateVersion": 3,
+  "summary": "Project includes a vendor item-adding flow that needs predefined product categories.",
+  "architectural_notes": [
+    "Define and maintain a canonical list of item categories used in the vendor item-adding flow (Fruits, Vegetables, Spices, Groceries, Snacks, Beverages, Household/Toiletries)."
   ],
-  "isFixRequest": true,
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-add-progressive-web-app-pwa-support-to-the-react-frontend-so-the-app-can-be-installed-on-android-devices-home-screen-install-and-can-be-wrapped-into-an-android-apk-using-a-trusted-web-activity-twa",
-      "title": "Add Progressive Web App (PWA) support to the React frontend so the app can be installed on Android devices (home-screen install) and can be wrapped into an Android APK using a Trusted Web Activity (TWA).",
+      "id": "feature-define-a-fixed-set-of-product-categories-for-the-app-using-exactly-these-english-category-labels-fruits-vegetables-spices-groceries-snacks-beverages-and-household-toiletries",
+      "title": "Define a fixed set of product categories for the app, using exactly these English category labels: \"Fruits\", \"Vegetables\", \"Spices\", \"Groceries\", \"Snacks\", \"Beverages\", and \"Household/Toiletries\".",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-provide-a-documented-reproducible-process-to-produce-an-android-apk-by-wrapping-the-deployed-web-app-url-using-android-trusted-web-activity-twa-including-required-android-settings-and-where-to-paste-the-production-url",
-      "title": "Provide a documented, reproducible process to produce an Android APK by wrapping the deployed web app URL using Android Trusted Web Activity (TWA), including required Android settings and where to paste the production URL.",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-apply-a-coherent-visual-theme-suitable-for-an-indian-provision-kirana-store-app-and-use-it-consistently-across-layouts-typography-spacing-and-component-styling-avoid-blue-purple-as-primary-colors",
-      "title": "Apply a coherent visual theme suitable for an Indian provision (kirana) store app and use it consistently across layouts, typography, spacing, and component styling (avoid blue/purple as primary colors).",
+      "id": "feature-add-a-required-category-selector-to-the-vendor-add-product-form-using-the-predefined-categories-and-include-the-selected-category-in-the-add-product-mutation-call",
+      "title": "Add a required Category selector to the vendor add-product form, using the predefined categories, and include the selected category in the add-product mutation call.",
       "reqIds": [
         "REQ-3"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-required-static-pwa-icon-assets-to-the-frontend-and-ensure-they-are-referenced-by-the-web-app-manifest",
-      "title": "Add required static PWA icon assets to the frontend and ensure they are referenced by the web app manifest.",
+      "id": "feature-update-the-buyer-facing-store-ui-to-reflect-the-new-category-set-fruits-vegetables-spices-groceries-snacks-beverages-household-toiletries-in-the-shop-by-category-section",
+      "title": "Update the buyer-facing store UI to reflect the new category set (Fruits, Vegetables, Spices, Groceries, Snacks, Beverages, Household/Toiletries) in the \"Shop by Category\" section.",
       "reqIds": [
         "REQ-4"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-a-missing-toiletries-category-to-the-category-list-shown-on-the-store-home-page-and-fix-spelling-to-toiletries-in-user-facing-text",
-      "title": "Add a missing \"Toiletries\" category to the category list shown on the Store Home page (and fix spelling to \"Toiletries\" in user-facing text).",
+      "id": "feature-ensure-frontend-backend-type-bindings-used-by-the-react-app-are-updated-so-the-product-type-includes-the-new-category-field-without-typescript-errors",
+      "title": "Ensure frontend backend type bindings used by the React app are updated so the Product type includes the new category field without TypeScript errors.",
       "reqIds": [
         "REQ-5"
       ],
@@ -52,13 +44,20 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Create an Android smartphone APK for an Indian provision store app",
+      "summary": "Add/select item categories for vendor items (e.g., Fruits, Vegetables, Spices, Groceries, Snacks, Beverages, Household/Toiletries)",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Extend the backend Product model to include a category field, and update product creation to persist the selected category for each product.",
+      "reqIds": [
+        "REQ-2"
+      ],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "Make the Indian provision store app installable on Android via PWA (APK-ready wrapping)",
+  "projectName": "Add predefined product categories and require category selection for vendor-added items",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
